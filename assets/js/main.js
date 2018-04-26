@@ -280,11 +280,13 @@ $(function() {
     if (!$body.hasClass('is-article-visible'))
       return;
 
+    var url = document.URL,
+ 	   shortUrl=url.substring(0,url.lastIndexOf("/"));
 
     // Add state?
     if (typeof addState != 'undefined' &&
       addState === true)
-      history.pushState(null, null, '#');
+      history.pushState(null, null, shortUrl);
 
 
     // Handle lock.
@@ -452,8 +454,10 @@ $(function() {
 
   function removeHash() {
     var scrollV, scrollH, loc = window.location;
+    var url = document.URL,
+ 	   shortUrl=url.substring(0,url.lastIndexOf("/"));
     if ("pushState" in history)
-      history.pushState("", document.title, loc.pathname + loc.search);
+      history.pushState("", document.title, shortUrl);
     else {
       // Prevent scrolling by storing the page's current scroll offset
       scrollV = document.body.scrollTop;
