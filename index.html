@@ -1,14 +1,7 @@
-<!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-
 <head>
 	<title>Oscar's Humble Domain</title>
-	<base id="baseurl" href="https://rawgit.com/soraxas/www/master/" />
-
+	<base id="baseurl" href="https://cdn.rawgit.com/soraxas/www/07b81ca/" />
 
 	<!-- Preload fonts -->
 	<link rel="preload" href="https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -24,15 +17,13 @@
 	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	<noscript>&lt;link rel="stylesheet" href="assets/css/noscript.css" /&gt;</noscript>
 </head>
-
 <body class="">
 	<!-- Wrapper -->
 	<div id="wrapper">
-
 		<!-- Header -->
 		<header id="header">
 			<div class="logo">
-				<span class="icon fa-university"></span>
+			<span class="icon fa-university"></span>
 			</div>
 			<div class="content">
 				<div class="inner">
@@ -65,22 +56,19 @@
 			<div style="clear: both;"></div>
 			<!-- Work -->
 			<article id="resume" class="wider" style="display: none;">
-				<!-- <span class="image main"><img data-src="images/cross-banner.jpg" alt="" /></span> -->
 				<div id="resume">
 					<object id="resume-container" data="files/resume.pdf" type="application/pdf" width="100%" internalinstanceid="6">
-						<!-- <iframe data-src="https://docs.google.com/gview?url=https://tinyiu.com/files/resume.pdf&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe> -->
+						<!-- Fall back for browser without pdf plugin -->
+						<div id="resume-gdocs"></div>
 						<script type="text/javascript">
 							var resumeSrc = "https://docs.google.com/gview?url=" + document.getElementById("baseurl").href + "files/resume.pdf&embedded=true";
 						        var ifrm = document.createElement("iframe");
 						        ifrm.setAttribute("data-src", resumeSrc);
 						        ifrm.style.width = "100%";
 						        ifrm.style.height = "500px";
-							var parent = document.getElementById('resume');
+							var parent = document.getElementById('resume-gdocs');
 							parent.insertBefore(ifrm, parent.lastChild);
 						</script>
-						<!-- <p>It appears you don't have a PDF plugin for this browser.
-						 No biggie... you can <a href="files/resume.pdf">click here to
-						download the PDF file.</a></p> -->
 				 	</object>
 				</div>
 				<div class="close">Close</div>
@@ -198,12 +186,10 @@
                         $this.attr('href', pathname + link);
                     });
                 });
-	</script>
-
-  <script>
-    $(window).resize(function() {
-      $('#resume-container').height(document.body.clientHeight - 150);
-    });
+	<!-- resizing PDF viewer -->
+	$(window).resize(function() {
+		$('#resume-container').height(document.body.clientHeight - 150);
+	});
     $(window).trigger('resize');
   </script>
 
